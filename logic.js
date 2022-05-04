@@ -1,4 +1,4 @@
-let players = ['x', 'o'];
+let players = ['X', 'O'];
 let activePlayer = 0;
 let board = [];
 
@@ -57,9 +57,25 @@ function isWinner(board) {
 }
 
 
-// function click(row, column) {
-//   board[row].splice(column, 1, players[activePlayer]);
-//   renderBoard (board);
-//   if (isWinner(board) === true) showWinner(activePlayer);
-//   if (activePlayer === 0) activePlayer = 1; else activePlayer = 0;
-// }
+function click(row, column) {
+  board[row].splice(column, 1, players[activePlayer]);
+  renderBoard (board);
+  if (isWinner(board) === true) showWinner(activePlayer);
+  if (activePlayer === 0) activePlayer = 1; else activePlayer = 0;
+}
+
+function random(min, max) {
+  return Math.floor(min + Math.random() * (max - min));
+}
+
+function isBot(board) {
+  let indexes = [];
+  for (let [i, row] of board.entries()) {
+    for (let [j, cell] of row.entries()) {
+      if (cell === '') indexes.push([i, j]);
+    }
+  }
+  
+  let [row, column] = indexes[random(0, indexes.length)];
+  return [row, column];
+}

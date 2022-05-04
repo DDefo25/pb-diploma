@@ -3,6 +3,7 @@ window.addEventListener('load', startGame);
 let boardEl = document.getElementById('board');
 let modalEl = document.getElementById('modal');
 let resetButtons = document.getElementsByClassName('reset');
+let botButtons = document.getElementsByClassName('botStep');
 
 for (let btn of resetButtons) {
   btn.addEventListener('click', function () {
@@ -12,6 +13,14 @@ for (let btn of resetButtons) {
     startGame();
   });
 }
+
+for (let btn of botButtons) {
+  btn.addEventListener('click', function () {
+    let [row, column] = isBot(board);
+    click(row, column);
+  });
+}
+
 
 boardEl.addEventListener('click', function (event) {
   let targetClasses = event.target.classList;
@@ -37,7 +46,7 @@ function renderBoard(board) {
             data-col="${j}"
             style="grid-row:${i + 1};grid-column:${j + 1};"
         >
-          ${value || ''}
+            ${value || ''}
         </div>
       `);
     }
