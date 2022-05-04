@@ -57,9 +57,9 @@ function isWinner(board) {
 }
 
 
-function click(row, column) {
-  board[row].splice(column, 1, players[activePlayer]);
-  renderBoard (board);
-  if (isWinner(board) === true) showWinner(activePlayer);
-  if (activePlayer === 0) activePlayer = 1; else activePlayer = 0;
-}
+// function click(row, column) {
+//   board[row].splice(column, 1, players[activePlayer]);
+//   renderBoard (board);
+//   if (isWinner(board) === true) showWinner(activePlayer);
+//   if (activePlayer === 0) activePlayer = 1; else activePlayer = 0;
+// }
